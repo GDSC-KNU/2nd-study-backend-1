@@ -3,12 +3,12 @@ package com.gdsc.boolpyeon.store.dto.response
 import com.gdsc.boolpyeon.store.dto.StoreDto
 
 data class StoreResponse(
-    val id: Long,
-    val branch_name: String,
-    val brand_name: String,
-    val latitude: Double,
-    val longitude: Double,
-    var like_count: Int
+    val id: Long?,
+    val branch_name: String?,
+    val brand_name: String?,
+    val latitude: Double?,
+    val longitude: Double?,
+    var like_count: Int?
 ) {
     companion object {
         fun of(
