@@ -13,7 +13,7 @@ class StoreController(
     @GetMapping("/{storeId}")
     fun store(@PathVariable("storeId") storeId: Long, map: ModelMap): String {
         val store = StoreResponse.from(storeService.getStore(storeId))
-        map.addAttribute("location", store.latitude!! + store.longitude!!)
+        map.addAttribute("location", store.location)
         map.addAttribute("like_count", store.like_count)
 
         return "store/detail"

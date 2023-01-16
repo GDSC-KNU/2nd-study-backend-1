@@ -1,9 +1,7 @@
 package com.gdsc.boolpyeon.store
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import org.locationtech.jts.geom.Point
+import javax.persistence.*
 
 @Entity
 @Table(name = "store")
@@ -13,7 +11,8 @@ class Store {
     var id: Long? = null
     val branch_name: String? = null
     val brand_name: String? = null
-    val latitude: Double? = null
-    val longitude: Double? = null
+
+    @Column(columnDefinition = "GEOMETRY")
+    val location: Point? = null
     var like_count: Int? = null
 }

@@ -1,13 +1,14 @@
 package com.gdsc.boolpyeon.store.dto.response
 
 import com.gdsc.boolpyeon.store.dto.StoreDto
+import org.locationtech.jts.geom.Point
+
 
 data class StoreResponse(
     val id: Long?,
     val branch_name: String?,
     val brand_name: String?,
-    val latitude: Double?,
-    val longitude: Double?,
+    val location: Point?,
     var like_count: Int?
 ) {
     companion object {
@@ -15,11 +16,10 @@ data class StoreResponse(
             id: Long,
             branch_name: String,
             brand_name: String,
-            latitude: Double,
-            longitude: Double,
+            location: Point,
             like_count: Int
         ): StoreResponse {
-            return StoreResponse(id, branch_name, brand_name, latitude, longitude, like_count)
+            return StoreResponse(id, branch_name, brand_name, location, like_count)
         }
 
         fun from(dto: StoreDto): StoreResponse {
@@ -27,8 +27,7 @@ data class StoreResponse(
                 dto.id,
                 dto.branch_name,
                 dto.brand_name,
-                dto.latitude,
-                dto.longitude,
+                dto.location,
                 dto.like_count
             )
         }
