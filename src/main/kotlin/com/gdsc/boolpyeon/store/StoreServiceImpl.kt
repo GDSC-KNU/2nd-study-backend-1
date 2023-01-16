@@ -23,7 +23,7 @@ class StoreServiceImpl(
     }
 
     @Transactional(readOnly = true)
-    override fun getNearStores(latitude: Double, longitude: Double): MutableList<StoreDto> {
-        TODO("Not yet implemented")
+    override fun getNearStores(latitude: Double, longitude: Double): List<StoreDto> {
+        return storeRepository.findNearStores(latitude, longitude).map { StoreDto(it) }
     }
 }
