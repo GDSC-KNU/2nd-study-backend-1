@@ -1,6 +1,7 @@
 package com.gdsc.boolpyeon.user
 
 import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
+import com.gdsc.boolpyeon.user.dto.request.UserModifyRequest
 
 interface UserService {
 
@@ -8,7 +9,7 @@ interface UserService {
 
     fun createUser(request: UserCreateRequest)
 
-    fun modifyUser()
+    fun modifyUser(request: UserModifyRequest)
 
     fun deleteUser(userId: Long)
 

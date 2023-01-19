@@ -1,6 +1,7 @@
 package com.gdsc.boolpyeon.user
 
 import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
+import com.gdsc.boolpyeon.user.dto.request.UserModifyRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
@@ -18,8 +19,9 @@ class UserServiceImpl(
         userRepository.save(user)
     }
 
-    override fun modifyUser() {
-        TODO("Not yet implemented")
+    override fun modifyUser(request: UserModifyRequest) {
+        val user = this.getUser(request.id)
+        user.modify(request)
     }
 
     override fun deleteUser(userId: Long) {

@@ -1,6 +1,7 @@
 package com.gdsc.boolpyeon.user
 
 import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
+import com.gdsc.boolpyeon.user.dto.request.UserModifyRequest
 import javax.persistence.*
 
 @Entity
@@ -14,6 +15,21 @@ class User(
     @Column
     var phoneNumber: String,
 ) {
+    fun modify(request: UserModifyRequest) {
+        // TODO( Front에서 null을 줄 수 있는가? )
+        request.name
+            ?.let { name ->
+                this.name = name
+            }
+        request.mail
+            ?.let { mail ->
+                this.mail = mail
+            }
+        request.phoneNumber
+            ?.let { phoneNumber ->
+                this.phoneNumber = phoneNumber
+            }
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
