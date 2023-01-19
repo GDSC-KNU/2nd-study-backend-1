@@ -25,7 +25,8 @@ class UserServiceImpl(
     }
 
     override fun deleteUser(userId: Long) {
-        TODO("Not yet implemented")
+        val user = this.getUser(userId)
+        userRepository.delete(user)
     }
 
     override fun getFavoriteStores(userId: Long) {
