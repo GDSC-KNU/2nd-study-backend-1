@@ -1,5 +1,9 @@
 package com.gdsc.boolpyeon.user.service
 
+import com.gdsc.boolpyeon.like_item.LikeItem
+import com.gdsc.boolpyeon.like_item.LikeItemRepository
+import com.gdsc.boolpyeon.like_store.LikeStore
+import com.gdsc.boolpyeon.like_store.LikeStoreRepository
 import com.gdsc.boolpyeon.user.domain.User
 import com.gdsc.boolpyeon.user.domain.dto.request.UserCreateRequest
 import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
@@ -11,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class UserServiceImpl(
     private val userRepository: UserRepository,
+    private val likeStoreRepository: LikeStoreRepository,
+    private val likeItemRepository: LikeItemRepository,
 ) : UserService {
 
     @Transactional(readOnly = true)
@@ -37,11 +43,13 @@ class UserServiceImpl(
         userRepository.delete(user)
     }
 
-    override fun getFavoriteStores(userId: Int) {
-        TODO("Not yet implemented")
+    override fun getLikeStores(userId: Int): List<LikeStore> {
+        val user = this.getUser(userId)
+        return likeStoreRepository.findAllByUser(user)
     }
 
-    override fun getLikeItems(userId: Int) {
-        TODO("Not yet implemented")
+    override fun getLikeItems(userId: Int): List<LikeItem> {
+        val user = this.getUser(userId)
+        return likeItemRepository.findAllByUser(user)
     }
 }

@@ -13,7 +13,7 @@ class UserController(
 ) {
 
     @GetMapping("/user/{id}")
-    fun getUser(@PathVariable("id") userId: Long): User {
+    fun getUser(@PathVariable("id") userId: Int): User {
         return userService.getUser(userId)
     }
 
@@ -28,17 +28,17 @@ class UserController(
     }
 
     @DeleteMapping("/user/{id}")
-    fun deleteUser(@PathVariable("id") userId: Long) {
+    fun deleteUser(@PathVariable("id") userId: Int) {
         userService.deleteUser(userId)
     }
 
-    @GetMapping("/user/{id}/favorite-stores")
-    fun getFavoriteStores(@PathVariable("id") userId: Long) {
-        userService.getFavoriteStores(userId)
+    @GetMapping("/user/{id}/like-stores")
+    fun getLikeStores(@PathVariable("id") userId: Int) {
+        userService.getLikeStores(userId)
     }
 
     @GetMapping("/user/{id}/like-items")
-    fun getLikeItems(@PathVariable("id") userId: Long) {
+    fun getLikeItems(@PathVariable("id") userId: Int) {
         userService.getLikeItems(userId)
     }
 
