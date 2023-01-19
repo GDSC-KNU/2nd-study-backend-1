@@ -4,6 +4,4 @@ data class UserCreateRequest(
     val name: String,
     val mail: String,
     val phoneNumber: String,
-) {
-
-}
+)

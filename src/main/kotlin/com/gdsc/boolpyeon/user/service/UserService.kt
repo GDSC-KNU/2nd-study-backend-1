@@ -6,15 +6,15 @@ import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
 
 interface UserService {
 
-    fun getUser(userId: Long): User
+    fun getUser(userId: Int): User
 
     fun createUser(request: UserCreateRequest)
 
     fun modifyUser(request: UserModifyRequest)
 
-    fun deleteUser(userId: Long)
+    fun deleteUser(userId: Int)
 
-    fun getFavoriteStores(userId: Long)
+    fun getFavoriteStores(userId: Int)
 
-    fun getLikeItems(userId: Long)
+    fun getLikeItems(userId: Int)
 }

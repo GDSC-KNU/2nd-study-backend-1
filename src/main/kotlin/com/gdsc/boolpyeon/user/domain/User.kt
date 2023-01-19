@@ -5,6 +5,7 @@ import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
 import javax.persistence.*
 
 @Entity
+@Table(name = "User")
 class User(
     @Column
     var name: String,
@@ -14,6 +15,10 @@ class User(
 
     @Column
     var phoneNumber: String,
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int? = null
 ) {
     fun modify(request: UserModifyRequest) {
         // TODO( Front에서 null을 줄 수 있는가? )
@@ -30,10 +35,6 @@ class User(
                 this.phoneNumber = phoneNumber
             }
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
 
     init {
         if (name.isBlank()) {
