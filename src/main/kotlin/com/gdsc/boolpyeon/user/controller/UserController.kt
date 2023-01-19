@@ -1,7 +1,9 @@
-package com.gdsc.boolpyeon.user
+package com.gdsc.boolpyeon.user.controller
 
-import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
-import com.gdsc.boolpyeon.user.dto.request.UserModifyRequest
+import com.gdsc.boolpyeon.user.domain.User
+import com.gdsc.boolpyeon.user.domain.dto.request.UserCreateRequest
+import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
+import com.gdsc.boolpyeon.user.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController

@@ -1,4 +1,4 @@
-package com.gdsc.boolpyeon.user.dto.request
+package com.gdsc.boolpyeon.user.domain.dto.request
 
 data class UserCreateRequest(
     val name: String,

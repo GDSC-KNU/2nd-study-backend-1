@@ -1,7 +1,7 @@
-package com.gdsc.boolpyeon.user
+package com.gdsc.boolpyeon.user.domain
 
-import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
-import com.gdsc.boolpyeon.user.dto.request.UserModifyRequest
+import com.gdsc.boolpyeon.user.domain.dto.request.UserCreateRequest
+import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
 import javax.persistence.*
 
 @Entity
