@@ -1,5 +1,6 @@
 package com.gdsc.boolpyeon.user
 
+import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -14,8 +15,8 @@ class UserController(
     }
 
     @PostMapping("/user")
-    fun createUser() {
-        userService.createUser()
+    fun createUser(@RequestBody request: UserCreateRequest) {
+        userService.createUser(request)
     }
 
     @PutMapping("/user")

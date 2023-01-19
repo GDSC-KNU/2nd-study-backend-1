@@ -1,5 +1,6 @@
 package com.gdsc.boolpyeon.user
 
+import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
@@ -12,8 +13,9 @@ class UserServiceImpl(
             ?: throw IllegalArgumentException("존재하지 않는 User 입니다.")
     }
 
-    override fun createUser() {
-        TODO("Not yet implemented")
+    override fun createUser(request: UserCreateRequest) {
+        val user = User.fromRequest(request)
+        userRepository.save(user)
     }
 
     override fun modifyUser() {

@@ -1,5 +1,6 @@
 package com.gdsc.boolpyeon.user
 
+import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
 import javax.persistence.*
 
 @Entity
@@ -30,6 +31,14 @@ class User(
                 name = "홍길동",
                 mail = "abc@def.ghi",
                 phoneNumber = "01012345678",
+            )
+        }
+
+        fun fromRequest(request: UserCreateRequest): User {
+            return User(
+                name = request.name,
+                mail = request.mail,
+                phoneNumber = request.phoneNumber,
             )
         }
     }
