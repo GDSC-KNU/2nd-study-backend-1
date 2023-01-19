@@ -5,7 +5,7 @@ import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
 import javax.persistence.*
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 class User(
     @Column
     var name: String,
