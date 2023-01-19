@@ -1,12 +1,15 @@
 package com.gdsc.boolpyeon.user
 
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class UserServiceImpl : UserService {
+class UserServiceImpl(
+    private val userRepository: UserRepository,
+) : UserService {
     override fun getUser(userId: Long): User {
-        TODO("실제 유저 정보 가져오기")
-        return User.fixture()
+        return userRepository.findByIdOrNull(userId)
+            ?: throw IllegalArgumentException("존재하지 않는 User 입니다.")
     }
 
     override fun createUser() {
