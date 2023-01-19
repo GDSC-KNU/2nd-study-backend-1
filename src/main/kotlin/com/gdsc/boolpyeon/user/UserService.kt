@@ -1,11 +1,18 @@
 package com.gdsc.boolpyeon.user
 
+import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
+
 interface UserService {
-    fun signup()
 
-    fun login()
+    fun getUser(userId: Long): User
 
-    fun logout()
+    fun createUser(request: UserCreateRequest)
 
-    fun getUser(userId: Int): User
+    fun modifyUser()
+
+    fun deleteUser(userId: Long)
+
+    fun getFavoriteStores(userId: Long)
+
+    fun getLikeItems(userId: Long)
 }

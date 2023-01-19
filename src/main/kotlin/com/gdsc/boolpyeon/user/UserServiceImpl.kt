@@ -1,23 +1,36 @@
 package com.gdsc.boolpyeon.user
 
+import com.gdsc.boolpyeon.user.dto.request.UserCreateRequest
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class UserServiceImpl : UserService {
-    override fun signup() {
-        println("signup")
+class UserServiceImpl(
+    private val userRepository: UserRepository,
+) : UserService {
+    override fun getUser(userId: Long): User {
+        return userRepository.findByIdOrNull(userId)
+            ?: throw IllegalArgumentException("존재하지 않는 User 입니다.")
     }
 
-    override fun login() {
-        println("login")
+    override fun createUser(request: UserCreateRequest) {
+        val user = User.fromRequest(request)
+        userRepository.save(user)
     }
 
-    override fun logout() {
-        println("logout")
+    override fun modifyUser() {
+        TODO("Not yet implemented")
     }
 
-    override fun getUser(userId: Int): User {
-        TODO("실제 유저 정보 가져오기")
-        return User.fixture()
+    override fun deleteUser(userId: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getFavoriteStores(userId: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLikeItems(userId: Long) {
+        TODO("Not yet implemented")
     }
 }
