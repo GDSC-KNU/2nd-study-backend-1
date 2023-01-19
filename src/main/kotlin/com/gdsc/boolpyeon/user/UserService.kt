@@ -1,11 +1,16 @@
 package com.gdsc.boolpyeon.user
 
 interface UserService {
-    fun signup()
 
-    fun login()
+    fun getUser(userId: Long): User
 
-    fun logout()
+    fun createUser()
 
-    fun getUser(userId: Int): User
+    fun modifyUser()
+
+    fun deleteUser(userId: Long)
+
+    fun getFavoriteStores(userId: Long)
+
+    fun getLikeItems(userId: Long)
 }

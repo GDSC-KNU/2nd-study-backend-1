@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mydb.cis9dsmmx9aq.ap-northeast-1.rds.amazonaws.com:3306/mydb?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: rootroot
+  jpa:
+    properties:
+      dialect: org.hibernate.dialect.MySQL8Dialect

@@ -1,36 +1,37 @@
 package com.gdsc.boolpyeon.user
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class User(
+    @Column
     var name: String,
 
-    val mail: String?,
+    @Column
+    var mail: String,
 
-    val phone_number: String?,
+    @Column
+    var phoneNumber: String,
+) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-) {
-
-    companion object {
-        fun fixture(): User {
-            return User(
-                name = "홍길동",
-                mail = null,
-                phone_number = null,
-            )
-        }
-    }
+    var id: Long? = null
 
     init {
         if (name.isBlank()) {
             throw IllegalArgumentException("이름은 비어있을 수 없습니다.")
         }
     }
+
+    companion object {
+        fun fixture(): User {
+            return User(
+                name = "홍길동",
+                mail = "abc@def.ghi",
+                phoneNumber = "01012345678",
+            )
+        }
+    }
+
 }
