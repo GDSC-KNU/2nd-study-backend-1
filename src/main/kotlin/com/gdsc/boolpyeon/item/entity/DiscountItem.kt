@@ -21,4 +21,10 @@ class DiscountItem {
     val event_month: LocalDateTime? = null
     val image: String? = null
     val like_count: Int? = null
+
+    override fun equals(other: Any?): Boolean {
+        return if (other is DiscountItem) {
+            other.brand_name == this.brand_name && other.item_name == this.item_name
+        } else false
+    }
 }
