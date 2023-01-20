@@ -33,9 +33,11 @@ class UserServiceImplTest(
 ) : StringSpec({
 
     beforeEach {
+        likeItemRepository.deleteAll()
+        likeStoreRepository.deleteAll()
         userRepository.deleteAll()
-//        storeRepository.deleteAll()
-//        discountItemRepository.deleteAll()
+        storeRepository.deleteAll()
+        discountItemRepository.deleteAll()
     }
 
     // Create
