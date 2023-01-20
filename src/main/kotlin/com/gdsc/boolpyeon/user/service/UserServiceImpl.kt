@@ -26,10 +26,17 @@ class UserServiceImpl(
     }
 
     @Transactional
-    override fun createUser(request: UserCreateRequest): Int? {
-        var user = User.fromRequest(request)
-        user = userRepository.save(user)
-        return user.id
+    override fun createUser(request: UserCreateRequest): Int {
+        return userRepository.findByMailOrPhoneNumber(
+            mail = request.mail,
+            phoneNumber = request.phoneNumber,
+        )?.let {
+            throw IllegalArgumentException("이미 존재하는 유저입니다.")
+        } ?: run {
+            userRepository.save(
+                User.fromRequest(request)
+            ).id!!
+        }
     }
 
     @Transactional
