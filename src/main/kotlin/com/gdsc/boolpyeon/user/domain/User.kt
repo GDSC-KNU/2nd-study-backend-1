@@ -1,5 +1,6 @@
 package com.gdsc.boolpyeon.user.domain
 
+import com.gdsc.boolpyeon.like_store.LikeStore
 import com.gdsc.boolpyeon.user.domain.dto.request.UserCreateRequest
 import com.gdsc.boolpyeon.user.domain.dto.request.UserModifyRequest
 import javax.persistence.*
@@ -15,13 +16,18 @@ class User(
 
     @Column
     var phoneNumber: String,
+) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null
-) {
+
+    @OneToMany(mappedBy = "user")
+    var likeStore: MutableList<LikeStore> = mutableListOf()
+
     fun modify(request: UserModifyRequest) {
         // TODO( Front에서 null을 줄 수 있는가? )
+        // TODO ( reflect property를 이용하면 코드를 더 줄일 수 있을지도 )
         request.name
             ?.let { name ->
                 this.name = name

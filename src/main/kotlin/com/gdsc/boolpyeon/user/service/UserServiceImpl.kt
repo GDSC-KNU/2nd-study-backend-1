@@ -26,9 +26,10 @@ class UserServiceImpl(
     }
 
     @Transactional
-    override fun createUser(request: UserCreateRequest) {
-        val user = User.fromRequest(request)
-        userRepository.save(user)
+    override fun createUser(request: UserCreateRequest): Int? {
+        var user = User.fromRequest(request)
+        user = userRepository.save(user)
+        return user.id
     }
 
     @Transactional
@@ -43,11 +44,13 @@ class UserServiceImpl(
         userRepository.delete(user)
     }
 
+    @Transactional(readOnly = true)
     override fun getLikeStores(userId: Int): List<LikeStore> {
         val user = this.getUser(userId)
         return likeStoreRepository.findAllByUser(user)
     }
 
+    @Transactional(readOnly = true)
     override fun getLikeItems(userId: Int): List<LikeItem> {
         val user = this.getUser(userId)
         return likeItemRepository.findAllByUser(user)

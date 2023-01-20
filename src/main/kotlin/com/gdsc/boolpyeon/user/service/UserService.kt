@@ -10,7 +10,7 @@ interface UserService {
 
     fun getUser(userId: Int): User
 
-    fun createUser(request: UserCreateRequest)
+    fun createUser(request: UserCreateRequest): Int?
 
     fun modifyUser(request: UserModifyRequest)
 
