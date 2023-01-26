@@ -267,7 +267,7 @@ class UserServiceImplTest(
         repeat((0..3).count()) {
             val item = discountItemRepository.save(DiscountItem())
 //            TODO("생성자없이 val 이면 어떻게 값을 설정?")
-//            item.brand_name = "brand${it}"
+//            item.brandName = "brand${it}"
             discountItemRepository.save(item)
             likeItemRepository.save(
                 LikeItem(

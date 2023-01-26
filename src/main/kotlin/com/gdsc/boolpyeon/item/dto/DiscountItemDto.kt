@@ -17,14 +17,14 @@ data class DiscountItemDto(
 ) {
     constructor(discountItem: DiscountItem) : this(
         id = discountItem.id!!,
-        brand_name = discountItem.brand_name!!,
+        brand_name = discountItem.brandName!!,
         category = discountItem.category!!,
-        item_name = discountItem.item_name!!,
+        item_name = discountItem.itemName!!,
         price = discountItem.price!!,
         discount = discountItem.discount!!,
         event = discountItem.event!!,
-        event_month = discountItem.event_month!!,
+        event_month = discountItem.eventMonth!!,
         image = discountItem.image!!,
-        like_count = discountItem.like_count!!
+        like_count = discountItem.likeCount!!
     )
 }
