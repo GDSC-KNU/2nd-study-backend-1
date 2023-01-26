@@ -16,13 +16,13 @@ class DiscountItemServiceImpl(private val discountItemRepository: DiscountItemRe
 
     @Transactional(readOnly = true)
     override fun getBrandItems(brand: String): List<DiscountItemDto> {
-        val item = discountItemRepository.findAllByBrandName(brand) ?: throw IllegalArgumentException("id = $brand: 해당 브랜드의 상품이 존재하지 않습니다.")
+        val item = discountItemRepository.findAllByBrandName(brand) ?: throw IllegalArgumentException("brand = $brand: 해당 브랜드의 상품이 존재하지 않습니다.")
         return item.map { DiscountItemDto(it) }
     }
     @Transactional(readOnly = true)
     override fun getItem(itemName: String): DiscountItemDto {
         val item =
-            discountItemRepository.findByItemName(itemName) ?: throw IllegalArgumentException("id = $itemName: 해당 상품이 존재하지 않습니다.")
+            discountItemRepository.findByItemName(itemName) ?: throw IllegalArgumentException("name = $itemName: 해당 상품이 존재하지 않습니다.")
         return DiscountItemDto(item)
     }
 

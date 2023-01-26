@@ -28,7 +28,7 @@ class DiscountItemController(
         return "item/item"
     }
 
-    @GetMapping("/item/{brand}")
+    @GetMapping("/brand/{brand}")
     fun brandItems(@PathVariable brand: String, model: Model) : String {
         val items = discountItemService.getBrandItems(brand)
         model.addAttribute("items", items)
