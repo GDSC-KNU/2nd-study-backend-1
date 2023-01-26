@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DiscountItemRepository : JpaRepository<DiscountItem, Long> {
+    fun findAllByBrandName(brand: String): List<DiscountItem>?
+
+    fun findByItemName(itemName: String): DiscountItem?
 }
