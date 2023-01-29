@@ -6,19 +6,28 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @Controller
+@RequestMapping("/api")
 class DiscountItemController(
     private val discountItemService: DiscountItemService
 ) {
+
     @GetMapping("/items")
-    fun allItems(@RequestParam("brand", required = false) brand: String, @RequestParam("category", required = false) category: String,
-    @RequestParam("event_type", required = false) event_type: String, model: Model) : String {
-        val items = discountItemService.getAllItems(brand, category, event_type)
+    fun allItems(model: Model) : String {
+        val items = discountItemService.getAllItems()
         model.addAttribute("items", items)
         return "/item/allItems"
+    }
+    @GetMapping("/items/search")
+    fun searchItems(@RequestParam("brand", required = false) brand: String, @RequestParam("category", required = false) category: String,
+    @RequestParam("event_type", required = false) event_type: String, model: Model) : String {
+        val items = discountItemService.searchItems(brand, category, event_type)
+        model.addAttribute("items", items)
+        return "/item/searchItems"
     }
 
     @GetMapping("/item/{itemName}")

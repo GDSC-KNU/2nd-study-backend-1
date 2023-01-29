@@ -8,10 +8,32 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class DiscountItemServiceImpl(private val discountItemRepository: DiscountItemRepository) : DiscountItemService {
+    override fun getAllItems(): List<DiscountItemDto> {
+        return discountItemRepository.findAll().map { DiscountItemDto(it) }
+    }
 
     @Transactional(readOnly = true)
-    override fun getAllItems(brand: String, category: String, event_type: String): List<DiscountItemDto> {
-        return discountItemRepository.findAll().map { DiscountItemDto(it) }
+    override fun searchItems(brand: String, category: String, event_type: String): List<DiscountItemDto> {
+        val items = discountItemRepository.findAll()
+        if (brand.isEmpty()) {
+            if (category.isEmpty() && event_type.isNotEmpty()) {
+                return items.filter { it.event == event_type }.map { DiscountItemDto(it) }
+            } else if (category.isNotEmpty() && event_type.isEmpty()) {
+                return items.filter { it.category == category }.map { DiscountItemDto(it) }
+            } else if (category.isNotEmpty() && event_type.isNotEmpty()){
+                return items.filter { it.event == event_type && it.category == category }.map { DiscountItemDto(it) }
+            }
+        }
+        else if (brand.isNotEmpty()){
+            if (category.isEmpty() && event_type.isNotEmpty()) {
+                return items.filter { it.brandName == brand && it.event == event_type }.map { DiscountItemDto(it) }
+            } else if (category.isNotEmpty() && event_type.isEmpty()) {
+                return items.filter { it.brandName == brand && it.category == category }.map { DiscountItemDto(it) }
+            } else if (category.isEmpty() && event_type.isEmpty()) {
+                return items.filter { it.brandName == brand && it.event == event_type && it.category == category }.map { DiscountItemDto(it) }
+            }
+        }
+        return items.map { DiscountItemDto(it) }
     }
 
     @Transactional(readOnly = true)
