@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
@@ -12,27 +13,34 @@ ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 </head>
 <body>
 <div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
   <div>
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>#</th>
+        <th>이미지</th>
+        <th>편의점명</th>
         <th>상품명</th>
-        <th>브랜드명</th>
+        <th>카테고리</th>
+        <th>행사</th>
         <th>가격</th>
-        <th></th>
+        <th>좋아요</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="item : ${items}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.item_name}"></td>
+        <td><img th:src="${item.image}"></td>
         <td th:text="${item.brand_name}"></td>
+        <td th:text="${item.item_name}"></td>
+        <td th:text="${item.event}"></td>
+        <td th:text="${item.category}"></td>
         <td th:text="${item.price}"></td>
+        <td th:text="${item.like_count}"></td>
       </tr>
       </tbody>
     </table>
   </div>
+  <div th:replace="fragments/footer :: footer"/>
 </div> <!-- /container -->
 </body>
 </html>
